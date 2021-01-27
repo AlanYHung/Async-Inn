@@ -8,10 +8,8 @@ namespace Asyn_Inn.Models
 {
     public class RoomAmenities
     {
-        [ForeignKey("")]
         public int AmenitiesId { get; set; }
 
-        [ForeignKey("")]
         public int RoomId { get; set; }
     }
 }

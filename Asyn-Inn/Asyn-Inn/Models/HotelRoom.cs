@@ -9,13 +9,11 @@ namespace Asyn_Inn.Models
 {
     public class HotelRoom
     {
-        [Key]
-        public int RoomNumber { get; set; }
-
-        [ForeignKey("")]
         public int HotelId { get; set; }
 
-        [ForeignKey("")]
+        [Required]
+        public int RoomNumber { get; set; }
+
         public int RoomId { get; set; }
 
         [Required]

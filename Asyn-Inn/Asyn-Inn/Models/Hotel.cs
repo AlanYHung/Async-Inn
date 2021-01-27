@@ -8,7 +8,6 @@ namespace Asyn_Inn.Models
 {
     public class Hotel
     {
-        [Key]
         public int Id { get; set; }
  
         [Required]
