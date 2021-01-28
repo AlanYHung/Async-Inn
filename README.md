@@ -1,11 +1,11 @@
-# Lab11-12 ERD Framework / API
+# Lab11-13 ERD Framework / API
 
 ## Author: Alan Hung
 ## Contributors: David Dicken, Scott Falbo, Kjell Overholt, Jordan Kidwell
 
 ### Getting Started
 * Open Visual Studio
-* Clone [Lab 12 Git Repository](https://github.com/AlanYHung/Async-Inn)
+* Clone [Async-Inn Git Repository](https://github.com/AlanYHung/Async-Inn)
 * Click Run
 
 ### ERD Visual
@@ -41,6 +41,8 @@
 * 0.6.0 - 1/26/2021 4:17pm - All Models Completed and Added
 * 0.8.0 - 1/26/2021 5:05pm - All Models Seeded
 * 1.0.0 - 1/26/2021 5:25pm - Controllers Added
+* 1.0.5 - 1/27/2021 3:30pm - Dependence Injection Refactoring of Rooms
+* 1.0.8 - 1/27/2021 4:22pm - Dependence Injection Refactoring of Hotel and Amenities
 
 ### Attribution
 * [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/)

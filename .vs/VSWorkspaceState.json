@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Asyn-Inn",
+    "\\Asyn-Inn\\Asyn-Inn",
+    "\\Asyn-Inn\\Asyn-Inn\\assets"
   ],
+  "SelectedNode": "\\Asyn-Inn\\Asyn-Inn\\assets\\AsyncInnERD.png",
   "PreviewInSolutionExplorer": false
 }

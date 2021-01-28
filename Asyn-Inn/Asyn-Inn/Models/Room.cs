@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Asyn_Inn.Models
 {
-    public class Room
-    {
-        public int Id { get; set; }
+  public class Room
+  {
+    public int Id { get; set; }
 
-        [Required]
-        public Layout RoomLayout { get; set; }
+    [Required]
+    public Layout RoomLayout { get; set; }
 
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
+  }
 
-    public enum Layout
-    {
-        Studio,
-        OneBedroom,
-        TwoBedroom
-    }
+  public enum Layout
+  {
+    Studio,
+    OneBedroom,
+    TwoBedroom
+  }
 }
