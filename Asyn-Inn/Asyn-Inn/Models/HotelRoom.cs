@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Asyn_Inn.Models
 {
-    public class HotelRoom
-    {
-        public int HotelId { get; set; }
+  public class HotelRoom
+  {
+    public int HotelId { get; set; }
 
-        [Required]
-        public int RoomNumber { get; set; }
+    [Required]
+    public int RoomNumber { get; set; }
 
-        public int RoomId { get; set; }
+    public int RoomId { get; set; }
 
-        [Required]
-        public decimal Rate { get; set; }
+    [Required]
+    public decimal Rate { get; set; }
 
-        public byte PetFriendly { get; set; }
-    }
+    public byte PetFriendly { get; set; }
+  }
 }
