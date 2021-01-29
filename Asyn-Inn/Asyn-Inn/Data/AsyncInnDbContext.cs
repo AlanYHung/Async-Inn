@@ -10,9 +10,9 @@ namespace Asyn_Inn.Data
   public class AsyncInnDbContext : DbContext
   {
     public DbSet<Hotel> Hotels { get; set; }
-    //public DbSet<HotelRoom> HotelRooms { get; set; }
+    public DbSet<HotelRoom> HotelRooms { get; set; }
     public DbSet<Room> Rooms { get; set; }
-    //public DbSet<RoomAmenities> RoomAmenity { get; set; }
+    public DbSet<RoomAmenities> RoomAmenity { get; set; }
     public DbSet<Amenities> Amenity { get; set; }
 
     public AsyncInnDbContext(DbContextOptions options) : base(options)
@@ -105,8 +105,62 @@ namespace Asyn_Inn.Data
           Name = "Swimming Pool"
         });
 
-      //modelBuilder.Entity<HotelRoom>()
-      //    .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelId, HotelRoomNumber.RoomNumber })
+      modelBuilder.Entity<RoomAmenities>()
+        .HasData(new RoomAmenities
+        {
+          RoomId = 1,
+          AmenitiesId = 3
+        });
+
+      modelBuilder.Entity<RoomAmenities>()
+        .HasData(new RoomAmenities
+        {
+          RoomId = 2,
+          AmenitiesId = 1
+        });
+
+      modelBuilder.Entity<RoomAmenities>()
+        .HasData(new RoomAmenities
+        {
+          RoomId = 3,
+          AmenitiesId = 2
+        });
+
+      modelBuilder.Entity<HotelRoom>()
+                  .HasData(new HotelRoom
+                  {
+                    HotelId = 1,
+                    RoomNumber = 99,
+                    RoomId = 1,
+                    Rate = 139.99M,
+                    PetFriendly = true
+                  });
+
+      modelBuilder.Entity<HotelRoom>()
+                  .HasData(new HotelRoom
+                  {
+                    HotelId = 2,
+                    RoomNumber = 777,
+                    RoomId = 3,
+                    Rate = 1139.99M,
+                    PetFriendly = false
+                  });
+
+      modelBuilder.Entity<HotelRoom>()
+                  .HasData(new HotelRoom
+                  {
+                    HotelId = 3,
+                    RoomNumber = 1,
+                    RoomId = 2,
+                    Rate = 1.99M,
+                    PetFriendly = true
+                  });
+
+      modelBuilder.Entity<RoomAmenities>()
+                  .HasKey(RoomAmenity => new { RoomAmenity.RoomId, RoomAmenity.AmenitiesId });
+
+      modelBuilder.Entity<HotelRoom>()
+                  .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelId, HotelRoomNumber.RoomNumber });
     }// end of OnModelCreating
   }
 }

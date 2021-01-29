@@ -30,6 +30,8 @@ namespace Asyn_Inn
     {
       services.AddMvc();
       services.AddControllers();
+      services.AddControllers().AddNewtonsoftJson(options =>
+                                                  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
       services.AddDbContext<AsyncInnDbContext>(options => {
         // Our DATABASE_URL from js days
         string connectionString = Configuration.GetConnectionString("DefaultConnection");
