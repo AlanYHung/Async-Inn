@@ -34,12 +34,19 @@ namespace Asyn_Inn.Interfaces.Services
     public async Task<Hotel> GetHotel(int id)
     {
       Hotel hotel = await _context.Hotels.FindAsync(id);
+      var hotelRoom = await _context.HotelRooms
+                                    .Where(hr => hr.HotelId == id)
+                                    .Include(ra => ra.Room)
+                                    .ToListAsync();
       return hotel;
     }
 
     public async Task<List<Hotel>> GetHotels()
     {
-      var hotels = await _context.Hotels.ToListAsync();
+      var hotels = await _context.Hotels
+                                 .Include(hr => hr.HotelRooms)
+                                 .ThenInclude(hr => hr.Room)
+                                 .ToListAsync();
       return hotels;
     }
 

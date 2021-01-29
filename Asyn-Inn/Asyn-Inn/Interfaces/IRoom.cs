@@ -13,5 +13,7 @@ namespace Asyn_Inn.Interfaces
     Task<List<Room>> GetRooms();
     Task<Room> UpdateRoom(int id, Room room);
     Task DeleteRoom(int id);
+    Task AddAmenity(int roomId, int amenityId);
+    Task RemoveAmenity(int roomId, int amenityId);
   }
 }

@@ -14,6 +14,10 @@ namespace Asyn_Inn.Models
     public Layout RoomLayout { get; set; }
 
     public string Name { get; set; }
+
+    public List<RoomAmenities> RoomAmenities { get; set; }
+
+    public List<HotelRoom> HotelRooms { get; set; }
   }
 
   public enum Layout

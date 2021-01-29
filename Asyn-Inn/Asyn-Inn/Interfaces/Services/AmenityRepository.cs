@@ -33,13 +33,19 @@ namespace Asyn_Inn.Interfaces.Services
 
     public async Task<Amenities> GetAmenity(int id)
     {
-      Amenities amenity = await _context.Amenity.FindAsync(id);
+      Amenities amenity = await _context.Amenity
+                                        .Where(ra => ra.Id == id)
+                                        .Include(ra => ra.RoomAmenities)
+                                        .FirstOrDefaultAsync();
       return amenity;
     }
 
     public async Task<List<Amenities>> GetAmenities()
     {
-      var amenities = await _context.Amenity.ToListAsync();
+      var amenities = await _context.Amenity
+                                    .Include(ra => ra.RoomAmenities)
+                                    .ThenInclude(ra => ra.Room)
+                                    .ToListAsync();
       return amenities;
     }
 
