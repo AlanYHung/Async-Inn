@@ -36,7 +36,9 @@ namespace Asyn_Inn.Interfaces.Services
       Hotel hotel = await _context.Hotels.FindAsync(id);
       var hotelRoom = await _context.HotelRooms
                                     .Where(hr => hr.HotelId == id)
-                                    .Include(ra => ra.Room)
+                                    .Include(hr => hr.Room)
+                                    .ThenInclude(r => r.RoomAmenities)
+                                    .ThenInclude(ra => ra.Amenity)
                                     .ToListAsync();
       return hotel;
     }
@@ -46,6 +48,8 @@ namespace Asyn_Inn.Interfaces.Services
       var hotels = await _context.Hotels
                                  .Include(hr => hr.HotelRooms)
                                  .ThenInclude(hr => hr.Room)
+                                 .ThenInclude(r => r.RoomAmenities)
+                                 .ThenInclude(ra => ra.Amenity)
                                  .ToListAsync();
       return hotels;
     }

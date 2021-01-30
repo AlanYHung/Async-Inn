@@ -33,17 +33,13 @@ namespace Asyn_Inn.Interfaces
 
     public async Task<Room> GetRoom(int id)
     {
-      Room room = await _context.Rooms.FindAsync(id);
-      var roomAmenities = await _context.RoomAmenity
-                                        .Where(ra => ra.RoomId == id)
-                                        .Include(ra => ra.Amenity)
-                                        .ToListAsync();
-      room.RoomAmenities = roomAmenities;
-      var hotelRoom = await _context.HotelRooms
-                                        .Where(hr => hr.RoomId == id)
-                                        .Include(hr => hr.Hotel)
-                                        .ToListAsync();
-      room.HotelRooms = hotelRoom;
+      Room room = await _context.Rooms
+                                .Where(r => r.Id == id)
+                                .Include(ra => ra.RoomAmenities)
+                                .ThenInclude(ra => ra.Amenity)
+                                .Include(hr => hr.HotelRooms)
+                                .ThenInclude(hr => hr.Hotel)
+                                .FirstOrDefaultAsync();
       return room;
     }
 
@@ -52,17 +48,9 @@ namespace Asyn_Inn.Interfaces
       var rooms = await _context.Rooms
                                 .Include(ra => ra.RoomAmenities)
                                 .ThenInclude(ra => ra.Amenity)
+                                .Include(hr => hr.HotelRooms)
+                                .ThenInclude(hr => hr.Hotel)
                                 .ToListAsync();
-
-      foreach (var room in rooms)
-      {
-        var hotelRoom = await _context.HotelRooms
-                                      .Where(hr => hr.RoomId == room.Id)
-                                      .Include(hr => hr.Hotel)
-                                      .ToListAsync();
-        room.HotelRooms = hotelRoom;
-      }
-
       return rooms;
     }
 
