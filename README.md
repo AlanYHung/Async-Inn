@@ -43,6 +43,9 @@
 * 1.0.0 - 1/26/2021 5:25pm - Controllers Added
 * 1.0.5 - 1/27/2021 3:30pm - Dependence Injection Refactoring of Rooms
 * 1.0.8 - 1/27/2021 4:22pm - Dependence Injection Refactoring of Hotel and Amenities
+* 1.5.8 - 1/28/2021 6:30pm - Added RoomAmenities Navigation and Relationships
+* 1.7.8 - 1/28/2021 9:00pm - Added HotelRoom Interface and Repository
+* 2.0.8 - 1/29/2021 5:56pm - Added HotelRoom Controller and tested all methods
 
 ### Attribution
 * [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/)
