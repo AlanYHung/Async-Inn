@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Asyn_Inn.Data;
 using Asyn_Inn.Models;
 using Asyn_Inn.Interfaces;
+using Asyn_Inn.Models.API;
 
 namespace Asyn_Inn.Controllers
 {
@@ -24,14 +25,14 @@ namespace Asyn_Inn.Controllers
 
     // GET: api/Amenities
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Amenities>>> GetAmenity()
+    public async Task<ActionResult<IEnumerable<AmenitiesDTO>>> GetAmenity()
     {
       return await _amenity.GetAmenities();
     }
 
     // GET: api/Amenities/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Amenities>> GetAmenities(int id)
+    public async Task<ActionResult<AmenitiesDTO>> GetAmenities(int id)
     {
       return await _amenity.GetAmenity(id);
     }
@@ -55,7 +56,7 @@ namespace Asyn_Inn.Controllers
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPost]
-    public async Task<ActionResult<Amenities>> PostAmenities(Amenities amenities)
+    public async Task<ActionResult<Amenities>> PostAmenities(AmenitiesDTO amenities)
     {
       await _amenity.Create(amenities);
       return CreatedAtAction("GetAmenities", new { id = amenities.Id }, amenities);
