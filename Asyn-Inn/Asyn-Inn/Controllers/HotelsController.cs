@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Asyn_Inn.Data;
 using Asyn_Inn.Models;
 using Asyn_Inn.Interfaces;
+using Asyn_Inn.Models.API;
 
 namespace Asyn_Inn.Controllers
 {
@@ -31,7 +32,7 @@ namespace Asyn_Inn.Controllers
 
     // GET: api/Hotels/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Hotel>> GetHotel(int id)
+    public async Task<ActionResult<HotelDTO>> GetHotel(int id)
     {
       var hotel = await _hotel.GetHotel(id);
 
@@ -47,7 +48,7 @@ namespace Asyn_Inn.Controllers
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutHotel(int id, Hotel hotel)
+    public async Task<IActionResult> PutHotel(int id, HotelDTO hotel)
     {
       if (id != hotel.Id)
       {
@@ -62,7 +63,7 @@ namespace Asyn_Inn.Controllers
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPost]
-    public async Task<ActionResult<Hotel>> PostHotel(Hotel hotel)
+    public async Task<ActionResult<Hotel>> PostHotel(HotelDTO hotel)
     {
       await _hotel.Create(hotel);
       return CreatedAtAction("GetHotel", new { id = hotel.Id }, hotel);

@@ -92,12 +92,12 @@ namespace Asyn_Inn.Interfaces.Services
                                         Name = hr.Room.Name,
                                         RoomLayout = hr.Room.RoomLayout,
                                         Amenities = hr.Room.RoomAmenities
-                                                                  .Select(ra => new AmenitiesDTO()
-                                                                  {
-                                                                    Id = ra.Amenity.Id,
-                                                                    Name = ra.Amenity.Name
-                                                                  })
-                                                                  .ToList()
+                                                           .Select(ra => new AmenitiesDTO()
+                                                           {
+                                                             Id = ra.Amenity.Id,
+                                                             Name = ra.Amenity.Name
+                                                           })
+                                                           .ToList()
                                       }
                                     })
                                     .ToListAsync();
