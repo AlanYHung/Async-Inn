@@ -9851,11 +9851,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\Asyn-Inn\\AsyncInnTest\\AsyncInnTest.csproj",
+      "projectUniqueName": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\AsyncInnTest\\AsyncInnTest.csproj",
       "projectName": "AsyncInnTest",
-      "projectPath": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\Asyn-Inn\\AsyncInnTest\\AsyncInnTest.csproj",
+      "projectPath": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\AsyncInnTest\\AsyncInnTest.csproj",
       "packagesPath": "C:\\Users\\AlanY\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\Asyn-Inn\\AsyncInnTest\\obj\\",
+      "outputPath": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\AsyncInnTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\AlanY\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9872,8 +9872,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\Asyn-Inn\\Asyn-Inn\\Asyn-Inn.csproj": {
-              "projectPath": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\Asyn-Inn\\Asyn-Inn\\Asyn-Inn.csproj"
+            "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\Asyn-Inn\\Asyn-Inn.csproj": {
+              "projectPath": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\Asyn-Inn\\Asyn-Inn.csproj"
             }
           }
         }
