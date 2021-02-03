@@ -34,7 +34,7 @@ namespace Asyn_Inn.Interfaces
 
     public async Task DeleteRoom(int id)
     {
-      RoomDTO room = await GetRoom(id);
+      Room room = await _context.Rooms.FindAsync(id);
       _context.Entry(room).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
     }
@@ -69,12 +69,12 @@ namespace Asyn_Inn.Interfaces
                                   Name = r.Name,
                                   RoomLayout = r.RoomLayout,
                                   Amenities = r.RoomAmenities
-                                              .Select(ra => new AmenitiesDTO
-                                              {
-                                                Id = ra.Amenity.Id,
-                                                Name = ra.Amenity.Name
-                                              })
-                                              .ToList()
+                                               .Select(ra => new AmenitiesDTO
+                                               {
+                                                 Id = ra.Amenity.Id,
+                                                 Name = ra.Amenity.Name
+                                               })
+                                               .ToList()
                                 })
                                 .ToListAsync();
       return rooms;
@@ -96,10 +96,10 @@ namespace Asyn_Inn.Interfaces
 
     public async Task AddAmenity(int roomId, int amenityId)
     {
-      RoomAmenities roomAmenities = new RoomAmenities()
+      RoomAmenities roomAmenities = new RoomAmenities
       {
-        RoomId = roomId,
-        AmenitiesId = amenityId
+        AmenitiesId = amenityId,
+        RoomId = roomId
       };
 
       _context.Entry(roomAmenities).State = EntityState.Added;

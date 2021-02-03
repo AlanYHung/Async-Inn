@@ -29,14 +29,16 @@ namespace Asyn_Inn.Interfaces.Services
         RoomId = HotelRoom.RoomId,
       };
 
-      _context.Entry(HotelRoom).State = EntityState.Added;
+      _context.Entry(hotelRoom).State = EntityState.Added;
       await _context.SaveChangesAsync();
       return hotelRoom;
     }
 
     public async Task DeleteHotelRoom(int hotelId, int roomNumber)
     {
-      HotelRoomDTO hotelRoom = await GetHotelRoom(hotelId, roomNumber);
+      HotelRoom hotelRoom = await _context.HotelRooms
+                                             .Where(hr => hr.HotelId == hotelId && hr.RoomNumber == roomNumber)
+                                             .FirstOrDefaultAsync();
       _context.Entry(hotelRoom).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
     }

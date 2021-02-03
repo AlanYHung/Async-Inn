@@ -22,7 +22,6 @@ namespace Asyn_Inn.Models
     [Required]
     public string State { get; set; }
 
-    [Required]
     public string Country { get; set; }
 
     [Required]

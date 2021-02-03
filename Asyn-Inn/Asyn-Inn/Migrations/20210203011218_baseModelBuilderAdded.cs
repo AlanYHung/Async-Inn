@@ -2,7 +2,7 @@
 
 namespace Asyn_Inn.Migrations
 {
-    public partial class RoomDI : Migration
+    public partial class baseModelBuilderAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

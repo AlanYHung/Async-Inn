@@ -33,7 +33,7 @@ namespace Asyn_Inn.Interfaces.Services
 
     public async Task DeleteAmenity(int id)
     {
-      AmenitiesDTO amenity = await GetAmenity(id);
+      Amenities amenity = await _context.Amenity.FindAsync(id);
       _context.Entry(amenity).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
     }
@@ -41,6 +41,7 @@ namespace Asyn_Inn.Interfaces.Services
     public async Task<AmenitiesDTO> GetAmenity(int id)
     {
       AmenitiesDTO amenity = await _context.Amenity
+                                           .Where(a => a.Id == id)
                                            .Select(amenity => new AmenitiesDTO
                                            {
                                              Id = amenity.Id,
@@ -64,9 +65,15 @@ namespace Asyn_Inn.Interfaces.Services
 
     public async Task<Amenities> updateAmenity(int id, Amenities amenity)
     {
-      _context.Entry(amenity).State = EntityState.Modified;
+      Amenities amenities = new Amenities()
+      {
+        Id = amenity.Id,
+        Name = amenity.Name
+      };
+
+      _context.Entry(amenities).State = EntityState.Modified;
       await _context.SaveChangesAsync();
-      return amenity;
+      return amenities;
     }
   }
 }

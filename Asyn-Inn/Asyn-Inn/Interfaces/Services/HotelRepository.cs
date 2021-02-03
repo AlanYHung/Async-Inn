@@ -37,8 +37,8 @@ namespace Asyn_Inn.Interfaces.Services
 
     public async Task DeleteHotel(int id)
     {
-      HotelDTO hotel = await GetHotel(id);
-      _context.Entry(hotel).State = EntityState.Deleted;
+      Hotel deleteHotel = await _context.Hotels.FindAsync(id);
+      _context.Entry(deleteHotel).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
     }
 
@@ -82,21 +82,24 @@ namespace Asyn_Inn.Interfaces.Services
                                      })
                                      .FirstOrDefaultAsync();
 
+      foreach (var hotelRoom in hotel.Rooms)
+      {
+        var ra = await _context.RoomAmenity
+                               .Where(ra => ra.RoomId == hotelRoom.RoomId)
+                               .Select(a => new AmenitiesDTO()
+                               {
+                                 Id = a.Amenity.Id,
+                                 Name = a.Amenity.Name
+                               })
+                               .ToListAsync();
+        hotelRoom.Room.Amenities = ra;
+      }
+
       return hotel;
     }
 
     public async Task<List<HotelDTO>> GetHotels()
     {
-      //var rooms = await _context.Amenity
-      //                              .Where()
-      //                              .ToListAsync();
-      //List<AmenitiesDTO> amenityList = new List<AmenitiesDTO>();
-
-      //foreach (var amenity in amenities)
-      //{
-      //  var newAmenity = await _context.Amenity
-      //  amenityList = newAmenity;
-      //}
       var hotels = await _context.Hotels
                                  .Select(h => new HotelDTO()
                                  {
@@ -120,7 +123,6 @@ namespace Asyn_Inn.Interfaces.Services
                                                               Id = r.Room.Id,
                                                               Name = r.Room.Name,
                                                               RoomLayout = r.Room.RoomLayout,
-                                                              Amenities = amenityList
                                                               //Amenities = r.Room.RoomAmenities
                                                               //                  .Select(ra => new AmenitiesDTO()
                                                               //                  {
@@ -135,6 +137,21 @@ namespace Asyn_Inn.Interfaces.Services
                                   })
                                   .ToListAsync();
 
+      foreach (var hotel in hotels)
+      {
+        foreach(var rooms in hotel.Rooms)
+        {
+          var ra = await _context.RoomAmenity
+                                 .Where(ra => ra.RoomId == rooms.RoomId)
+                                 .Select(a => new AmenitiesDTO()
+                                 {
+                                   Id = a.Amenity.Id,
+                                   Name = a.Amenity.Name
+                                 })
+                                 .ToListAsync();
+          rooms.Room.Amenities = ra;
+        }
+      }
 
       return hotels;
     }

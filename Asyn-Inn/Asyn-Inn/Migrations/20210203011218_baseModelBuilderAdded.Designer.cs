@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Asyn_Inn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    [Migration("20210129014022_seededRoomAmenities")]
-    partial class seededRoomAmenities
+    [Migration("20210203011218_baseModelBuilderAdded")]
+    partial class baseModelBuilderAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,6 @@ namespace Asyn_Inn.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -121,6 +120,56 @@ namespace Asyn_Inn.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Asyn_Inn.Models.HotelRoom", b =>
+                {
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomNumber")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("PetFriendly")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Rate")
+                        .HasColumnType("decimal(6, 2)");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("HotelId", "RoomNumber");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("HotelRooms");
+
+                    b.HasData(
+                        new
+                        {
+                            HotelId = 1,
+                            RoomNumber = 99,
+                            PetFriendly = true,
+                            Rate = 139.99m,
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            HotelId = 2,
+                            RoomNumber = 777,
+                            PetFriendly = false,
+                            Rate = 1139.99m,
+                            RoomId = 3
+                        },
+                        new
+                        {
+                            HotelId = 3,
+                            RoomNumber = 1,
+                            PetFriendly = true,
+                            Rate = 1.99m,
+                            RoomId = 2
+                        });
+                });
+
             modelBuilder.Entity("Asyn_Inn.Models.Room", b =>
                 {
                     b.Property<int>("Id")
@@ -161,34 +210,49 @@ namespace Asyn_Inn.Migrations
 
             modelBuilder.Entity("Asyn_Inn.Models.RoomAmenities", b =>
                 {
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
                     b.Property<int>("AmenitiesId")
                         .HasColumnType("int");
 
-                    b.HasKey("RoomId", "AmenitiesId");
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("AmenitiesId");
+                    b.HasKey("AmenitiesId", "RoomId");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("RoomAmenity");
 
                     b.HasData(
                         new
                         {
-                            RoomId = 1,
-                            AmenitiesId = 3
+                            AmenitiesId = 3,
+                            RoomId = 1
                         },
                         new
                         {
-                            RoomId = 2,
-                            AmenitiesId = 1
+                            AmenitiesId = 1,
+                            RoomId = 2
                         },
                         new
                         {
-                            RoomId = 3,
-                            AmenitiesId = 2
+                            AmenitiesId = 2,
+                            RoomId = 3
                         });
+                });
+
+            modelBuilder.Entity("Asyn_Inn.Models.HotelRoom", b =>
+                {
+                    b.HasOne("Asyn_Inn.Models.Hotel", "Hotel")
+                        .WithMany("HotelRooms")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Asyn_Inn.Models.Room", "Room")
+                        .WithMany("HotelRooms")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Asyn_Inn.Models.RoomAmenities", b =>
