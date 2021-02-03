@@ -22,7 +22,9 @@ namespace Asyn_Inn.Data
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       // This calls the base method, but does nothing
-      // base.OnModelCreating(modelBuilder);
+      base.OnModelCreating(modelBuilder);
+      modelBuilder.Entity<RoomAmenities>()
+                  .HasKey(RoomAmenity => new { RoomAmenity.AmenitiesId, RoomAmenity.RoomId  });
 
       modelBuilder.Entity<Hotel>()
                   .HasData(new Hotel
@@ -155,9 +157,6 @@ namespace Asyn_Inn.Data
                     Rate = 1.99M,
                     PetFriendly = true
                   });
-
-      modelBuilder.Entity<RoomAmenities>()
-                  .HasKey(RoomAmenity => new { RoomAmenity.RoomId, RoomAmenity.AmenitiesId });
 
       modelBuilder.Entity<HotelRoom>()
                   .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelId, HotelRoomNumber.RoomNumber });

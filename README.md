@@ -46,6 +46,8 @@
 * 1.5.8 - 1/28/2021 6:30pm - Added RoomAmenities Navigation and Relationships
 * 1.7.8 - 1/28/2021 9:00pm - Added HotelRoom Interface and Repository
 * 2.0.8 - 1/29/2021 5:56pm - Added HotelRoom Controller and tested all methods
+* 2.3.8 - 2/01/2021 10:00pm - DTO Refactoring completed of Hotels, Rooms, Amenities, and HotelRooms
+* 2.4.8 - 2/02/2021 5:26pm - DTO Bugs Fixed all Tested and Working
 
 ### Attribution
 * [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/)

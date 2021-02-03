@@ -63,7 +63,6 @@ namespace Asyn_Inn.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -209,33 +208,33 @@ namespace Asyn_Inn.Migrations
 
             modelBuilder.Entity("Asyn_Inn.Models.RoomAmenities", b =>
                 {
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
                     b.Property<int>("AmenitiesId")
                         .HasColumnType("int");
 
-                    b.HasKey("RoomId", "AmenitiesId");
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("AmenitiesId");
+                    b.HasKey("AmenitiesId", "RoomId");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("RoomAmenity");
 
                     b.HasData(
                         new
                         {
-                            RoomId = 1,
-                            AmenitiesId = 3
+                            AmenitiesId = 3,
+                            RoomId = 1
                         },
                         new
                         {
-                            RoomId = 2,
-                            AmenitiesId = 1
+                            AmenitiesId = 1,
+                            RoomId = 2
                         },
                         new
                         {
-                            RoomId = 3,
-                            AmenitiesId = 2
+                            AmenitiesId = 2,
+                            RoomId = 3
                         });
                 });
 
