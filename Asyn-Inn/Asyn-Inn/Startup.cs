@@ -67,10 +67,16 @@ namespace Asyn_Inn
       {
         option.RouteTemplate = "/api/{documentName}/swagger.json";
       });
+
       app.UseSwaggerUI(options =>
       {
         options.SwaggerEndpoint("api/v1/swagger.json", "School Demo");
         options.RoutePrefix = "";
+      });
+
+      app.UseEndpoints(endpoints =>
+      {
+        endpoints.MapControllers();
       });
     }
   }
