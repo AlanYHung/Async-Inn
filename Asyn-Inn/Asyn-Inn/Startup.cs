@@ -38,6 +38,15 @@ namespace Asyn_Inn
         options.UseSqlServer(connectionString);
       });
 
+      services.AddSwaggerGen(options =>
+      {
+        options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+        {
+          Title = "Async Inn",
+          Version = "v1"
+        });
+      });
+
       services.AddTransient<IRoom, RoomRepository>();
       services.AddTransient<IHotel, HotelRepository>();
       services.AddTransient<IAmenities, AmenityRepository>();
@@ -54,14 +63,14 @@ namespace Asyn_Inn
 
       app.UseRouting();
 
-      app.UseEndpoints(endpoints =>
+      app.UseSwagger(option =>
       {
-        endpoints.MapGet("/", async context =>
-        {
-          await context.Response.WriteAsync("Hello World!");
-        });
-
-        endpoints.MapControllers();
+        option.RouteTemplate = "/api/{documentName}/swagger.json";
+      });
+      app.UseSwaggerUI(options =>
+      {
+        options.SwaggerEndpoint("api/v1/swagger.json", "School Demo");
+        options.RoutePrefix = "";
       });
     }
   }
