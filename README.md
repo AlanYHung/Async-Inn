@@ -35,6 +35,58 @@
 - *Amenities Table*:
   - 1:Many relationship w/ the roomamenities table and stores all the possible amenities any of the rooms may have.
 
+### API Routes
+* __Hotel Routes:__ "/api/Hotels"
+	* CREATE/POST Routes:
+		* "/" - Let's you add hotel objects to the database
+	* READ/GET Routes:
+		* "/" - Returns all hotel objects in the database
+		* "/{id}" - Returns the hotel object with a matching id
+	* UPDATE/PUT:
+		* "/{id}" - Let's you modify the hotel object with the matching id
+	* DELETE/DELETE:
+		* "/{id}" - Let's you remove the hotel object with the matching id
+
+* __HotelRoom Routes:__ "/api/HotelRooms"
+	* CREATE/POST Routes:
+		* "/" - Let's you add hotelroom objects to the database
+	* READ/GET Routes:
+		* "/" - Returns all hotelroom objects in the database
+		* "/{hotelId}/{roomNumber}" - Returns the hotelroom object with a matching composite id
+	* UPDATE/PUT:
+		* "/{hotelId}/{roomNumber}" - Let's you modify the hotelroom object with the matching composite id
+	* DELETE/DELETE:
+		* "/{hotelId}/{roomNumber}" - Let's you remove the hotelroom object with the matching composite id
+
+* __Room Routes:__ "/api/Rooms"
+	* CREATE/POST Routes:
+		* "/" - Let's you add room objects to the database
+	* READ/GET Routes:
+		* "/" - Returns all room objects in the database
+		* "/{Id}" - Returns the room object with a matching id
+	* UPDATE/PUT:
+		* "/{Id}" - Let's you modify the room object with the matching id
+	* DELETE/DELETE:
+		* "/{Id}" - Let's you remove the room object with the matching id
+
+	*__Room Amenities:__ "/api/Rooms"
+		* CREATE/POST Routes:
+			* "/{amenityId}/{roomId}" - Let's you add roomamenity objects to the database
+		* DELETE/DELETE:
+			* "/{amenityId}/{roomId}" - Let's you remove the roomamenity object with the matching id
+
+
+* __Amenities Routes:__ "/api/Amenities"
+	* CREATE/POST Routes:
+		* "/" - Let's you add Amenities objects to the database
+	* READ/GET Routes:
+		* "/" - Returns all Amenities objects in the database
+		* "/{Id}" - Returns the Amenities object with a matching id
+	* UPDATE/PUT:
+		* "/{Id}" - Let's you modify the Amenities object with the matching id
+	* DELETE/DELETE:
+		* "/{Id}" - Let's you remove the Amenities object with the matching id
+
 ### Change Log
 * 0.1.0 - 1/26/2021 3:15pm - Initial Repo and Project Setup
 * 0.3.0 - 1/26/2021 3:50pm - Database & Models Added

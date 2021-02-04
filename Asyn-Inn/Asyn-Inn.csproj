@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Asyn_Inn</RootNamespace>
+    <UserSecretsId>96854a82-e973-43cb-932c-913439455837</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

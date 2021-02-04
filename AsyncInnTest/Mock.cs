@@ -49,22 +49,33 @@ namespace AsyncInnTest
 
       _db.Hotels.Add(newHotel);
       await _db.SaveChangesAsync();
+      _db.Entry(newHotel).State = EntityState.Detached;
       Assert.NotEqual(0, newHotel.Id);
       return newHotel;
     }
 
     protected async Task<Room> CreateAndSaveTestRoom()
     {
-      var newRoom = new Room
+      var newRoom1 = new Room
       {
         Name = "Singularity X",
         RoomLayout = (Layout)0
       };
 
-      _db.Rooms.Add(newRoom);
+      var newRoom2 = new Room
+      {
+        Name = "Black Hole Y",
+        RoomLayout = (Layout)1
+      };
+
+      _db.Rooms.Add(newRoom1);
+      _db.Rooms.Add(newRoom2);
       await _db.SaveChangesAsync();
-      Assert.NotEqual(0, newRoom.Id);
-      return newRoom;
+      _db.Entry(newRoom1).State = EntityState.Detached;
+      _db.Entry(newRoom2).State = EntityState.Detached;
+      Assert.NotEqual(0, newRoom1.Id);
+      Assert.NotEqual(0, newRoom2.Id);
+      return newRoom1;
     }
 
     protected async Task<Amenities> CreateAndSaveTestAmenity()
@@ -76,6 +87,7 @@ namespace AsyncInnTest
 
       _db.Amenity.Add(newAmenity);
       await _db.SaveChangesAsync();
+      _db.Entry(newAmenity).State = EntityState.Detached;
       Assert.NotEqual(0, newAmenity.Id);
       return newAmenity;
     }
@@ -90,6 +102,7 @@ namespace AsyncInnTest
 
       _db.RoomAmenity.Add(newRoomAmenity);
       await _db.SaveChangesAsync();
+      _db.Entry(newRoomAmenity).State = EntityState.Detached;
       Assert.NotEqual(0, newRoomAmenity.RoomId);
       return newRoomAmenity;
     }
@@ -99,7 +112,7 @@ namespace AsyncInnTest
       var newHotelRoom = new HotelRoom
       {
         HotelId = 1,
-        RoomNumber = 99,
+        RoomNumber = 555,
         RoomId = 1,
         Rate = 139.99M,
         PetFriendly = true
@@ -107,6 +120,7 @@ namespace AsyncInnTest
 
       _db.HotelRooms.Add(newHotelRoom);
       await _db.SaveChangesAsync();
+      _db.Entry(newHotelRoom).State = EntityState.Detached;
       Assert.NotEqual(0, newHotelRoom.HotelId);
       return newHotelRoom;
     }
