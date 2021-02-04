@@ -87,6 +87,12 @@
 	* DELETE/DELETE:
 		* "/{Id}" - Let's you remove the Amenities object with the matching id
 
+* __Identity Routes:__ "/api/Users"
+	* CREATE/POST Routes:
+		* "/Register" - Let's you add new user objects to the database
+	* READ/GET Routes:
+		* "/Login" - Gets and returns a user object
+
 ### Change Log
 * 0.1.0 - 1/26/2021 3:15pm - Initial Repo and Project Setup
 * 0.3.0 - 1/26/2021 3:50pm - Database & Models Added
@@ -100,6 +106,7 @@
 * 2.0.8 - 1/29/2021 5:56pm - Added HotelRoom Controller and tested all methods
 * 2.3.8 - 2/01/2021 10:00pm - DTO Refactoring completed of Hotels, Rooms, Amenities, and HotelRooms
 * 2.4.8 - 2/02/2021 5:26pm - DTO Bugs Fixed all Tested and Working
+* 2.5.8 - 2/03/2021 7:45pm - App Deployment
 
 ### Attribution
 * [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/)

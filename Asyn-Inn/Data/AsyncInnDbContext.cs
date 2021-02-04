@@ -1,4 +1,5 @@
 ﻿using Asyn_Inn.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Asyn_Inn.Data
 {
-  public class AsyncInnDbContext : DbContext
+  public class AsyncInnDbContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<HotelRoom> HotelRooms { get; set; }

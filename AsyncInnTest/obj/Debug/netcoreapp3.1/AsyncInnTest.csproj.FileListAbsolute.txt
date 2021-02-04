@@ -251,8 +251,6 @@ C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\b
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
-C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
@@ -269,9 +267,7 @@ C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\b
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
@@ -474,3 +470,12 @@ C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\o
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\obj\Debug\netcoreapp3.1\AsyncInnTest.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\obj\Debug\netcoreapp3.1\AsyncInnTest.pdb
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\obj\Debug\netcoreapp3.1\AsyncInnTest.genruntimeconfig.cache
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
