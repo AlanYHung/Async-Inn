@@ -1,9 +1,11 @@
 using Asyn_Inn.Data;
 using Asyn_Inn.Interfaces;
 using Asyn_Inn.Interfaces.Services;
+using Asyn_Inn.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +40,13 @@ namespace Asyn_Inn
         options.UseSqlServer(connectionString);
       });
 
+      services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+      {
+        options.User.RequireUniqueEmail = true;
+        // There are other options like this
+      })
+      .AddEntityFrameworkStores<AsyncInnDbContext>();
+
       services.AddSwaggerGen(options =>
       {
         options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
@@ -51,6 +60,7 @@ namespace Asyn_Inn
       services.AddTransient<IHotel, HotelRepository>();
       services.AddTransient<IAmenities, AmenityRepository>();
       services.AddTransient<IHotelRoom, HotelRoomRepository>();
+      services.AddTransient<IUserService, IdentityUserService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
