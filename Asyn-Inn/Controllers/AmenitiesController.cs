@@ -26,6 +26,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // GET: api/Amenities
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AmenitiesDTO>>> GetAmenity()
     {
@@ -33,6 +34,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // GET: api/Amenities/5
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<AmenitiesDTO>> GetAmenities(int id)
     {
@@ -42,6 +44,7 @@ namespace Asyn_Inn.Controllers
     // PUT: api/Amenities/5
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+    [Authorize(Roles = "Editor")]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAmenities(int id, Amenities amenities)
     {
@@ -57,6 +60,7 @@ namespace Asyn_Inn.Controllers
     // POST: api/Amenities
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+    [Authorize(Roles = "Writer")]
     [HttpPost]
     public async Task<ActionResult<Amenities>> PostAmenities(AmenitiesDTO amenities)
     {
@@ -65,6 +69,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // DELETE: api/Amenities/5
+    [Authorize(Roles = "Administrator")]
     [HttpDelete("{id}")]
     public async Task<ActionResult<Amenities>> DeleteAmenities(int id)
     {
