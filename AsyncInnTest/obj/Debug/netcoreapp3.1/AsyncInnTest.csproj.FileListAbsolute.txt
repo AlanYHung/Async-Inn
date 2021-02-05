@@ -479,3 +479,4 @@ C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\b
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\AlanY\Documents\Projects\Code Fellows 401\lab12-AsyncInn\AsyncInnTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

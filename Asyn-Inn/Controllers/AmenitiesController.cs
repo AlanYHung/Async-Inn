@@ -9,9 +9,11 @@ using Asyn_Inn.Data;
 using Asyn_Inn.Models;
 using Asyn_Inn.Interfaces;
 using Asyn_Inn.Models.API;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Asyn_Inn.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class AmenitiesController : ControllerBase

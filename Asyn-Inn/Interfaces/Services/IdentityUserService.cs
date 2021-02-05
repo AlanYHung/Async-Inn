@@ -9,8 +9,8 @@ namespace Asyn_Inn.Interfaces.Services
 {
   public class IdentityUserService : IUserService
   {
-    private UserManager<ApplicationUser> userManager;
-    private JwtTokenService tokenService;
+    private readonly UserManager<ApplicationUser> userManager;
+    private readonly JwtTokenService tokenService;
 
     public IdentityUserService(UserManager<ApplicationUser> manager, JwtTokenService jwtTokenService)
     {
@@ -39,7 +39,6 @@ namespace Asyn_Inn.Interfaces.Services
         {
           Id = user.Id,
           Username = user.UserName,
-          Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15)),
         };
       }
 
@@ -56,11 +55,7 @@ namespace Asyn_Inn.Interfaces.Services
         modelState.AddModelError(errorKey, error.Description);
       }
 
-      return new UserDTO
-      {
-        Id = user.Id,
-        Username = user.UserName,
-      };
+      return null;
     }
 
     public async Task<UserDTO> Authenticate(string username, string password)

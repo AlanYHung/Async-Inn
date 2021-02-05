@@ -19,6 +19,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // POST: api/Users/Register
+    [AllowAnonymous]
     [HttpPost("Register")]
     public async Task<ActionResult<UserDTO>> Register(RegisterUser data)
     {
@@ -33,6 +34,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // POST: api/Users/Login
+    [AllowAnonymous]
     [HttpPost("Login")]
     public async Task<ActionResult<UserDTO>> Login(LoginData data)
     {
