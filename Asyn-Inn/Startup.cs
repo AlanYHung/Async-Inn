@@ -2,18 +2,14 @@ using Asyn_Inn.Data;
 using Asyn_Inn.Interfaces;
 using Asyn_Inn.Interfaces.Services;
 using Asyn_Inn.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Asyn_Inn
 {
@@ -47,6 +43,30 @@ namespace Asyn_Inn
       })
       .AddEntityFrameworkStores<AsyncInnDbContext>();
 
+      services.AddScoped<JwtTokenService>();
+
+      // Add the wiring for adding "Authentication" for our API
+      // "We want the system to always use these "Schemes" to authenticate us
+      services.AddAuthentication(options =>
+      {
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+      })
+        .AddJwtBearer(options =>
+        {
+           // Tell the authenticaion scheme "how/where" to validate the token + secret
+           options.TokenValidationParameters = JwtTokenService.GetValidationParameters(Configuration);
+        });
+
+      services.AddAuthorization(options =>
+      {
+        // Add "Name of Policy", and the Lambda returns a definition
+        options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
+        options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
+        options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
+      });
+      
       services.AddSwaggerGen(options =>
       {
         options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
@@ -72,6 +92,9 @@ namespace Asyn_Inn
       }
 
       app.UseRouting();
+
+      app.UseAuthentication();
+      app.UseAuthorization();
 
       app.UseSwagger(option =>
       {

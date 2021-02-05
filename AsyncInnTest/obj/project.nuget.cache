@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xoQr/Q3nFzqMiCT6keMImUyhB/o0xzR44r1Un9+DNmr6bG456LECslVIXh8SPM5Ri/PX8jaaYGfBfGwF5TChyw==",
+  "dgSpecHash": "IMkItdzR0tCMt/6aizfKfdrmlUTEKDwbF58zfEmZj575hSHvwrAfzxg/RXFJ8y7BQCzYLyv8lhT+iocN4szbrg==",
   "success": true,
   "projectFilePath": "C:\\Users\\AlanY\\Documents\\Projects\\Code Fellows 401\\lab12-AsyncInn\\AsyncInnTest\\AsyncInnTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AlanY\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
+    "C:\\Users\\AlanY\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.11\\microsoft.aspnetcore.authentication.jwtbearer.3.1.11.nupkg.sha512",
     "C:\\Users\\AlanY\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.11\\microsoft.aspnetcore.cryptography.internal.3.1.11.nupkg.sha512",
     "C:\\Users\\AlanY\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.11\\microsoft.aspnetcore.cryptography.keyderivation.3.1.11.nupkg.sha512",
     "C:\\Users\\AlanY\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
