@@ -1,16 +1,12 @@
 ﻿using Asyn_Inn.Interfaces;
-using Asyn_Inn.Models;
 using Asyn_Inn.Models.API;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Asyn_Inn.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class UsersController : ControllerBase
@@ -46,6 +42,16 @@ namespace Asyn_Inn.Controllers
         return user;
       }
       return Unauthorized();
+    }
+
+    // Whoa! New annotation that will be able to Read the bearer token
+    // and return a user based on the claim/principal within...
+    [HttpGet("me")]
+    public async Task<ActionResult<UserDTO>> Me()
+    {
+      // Following the [Authorize] phase, this.User will be ... you.
+      // Put a breakpoint here and inspect to see what's passed to our getUser method
+      return await userService.GetUser(this.User);
     }
   }
 }

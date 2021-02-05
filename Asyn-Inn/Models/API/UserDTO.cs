@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Asyn_Inn.Models.API
 {
@@ -9,5 +6,7 @@ namespace Asyn_Inn.Models.API
   {
     public string Id { get; set; }
     public string Username { get; set; }
+    public string Token { get; set; }
+    public List<string> Roles { get; set; }
   }
 }

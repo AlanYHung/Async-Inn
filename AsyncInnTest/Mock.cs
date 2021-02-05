@@ -1,14 +1,10 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Asyn_Inn.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Sqlite;
 using Asyn_Inn.Models;
 using System.Threading.Tasks;
 using Xunit;
-using Asyn_Inn.Models.API;
 
 namespace AsyncInnTest
 {

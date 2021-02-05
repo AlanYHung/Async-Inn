@@ -1,4 +1,5 @@
 ﻿using Asyn_Inn.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,7 @@ namespace Asyn_Inn.Data
 {
   public class AsyncInnDbContext : IdentityDbContext<ApplicationUser>
   {
+    private int nextId = 1; // we need this to generate a unique id on our own
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<HotelRoom> HotelRooms { get; set; }
     public DbSet<Room> Rooms { get; set; }
@@ -26,7 +28,9 @@ namespace Asyn_Inn.Data
       base.OnModelCreating(modelBuilder);
       modelBuilder.Entity<RoomAmenities>()
                   .HasKey(RoomAmenity => new { RoomAmenity.AmenitiesId, RoomAmenity.RoomId  });
-
+      SeedRole(modelBuilder, "Administrator", "create", "update", "delete");
+      SeedRole(modelBuilder, "Editor", "create", "update");
+      SeedRole(modelBuilder, "Writer", "create");
       modelBuilder.Entity<Hotel>()
                   .HasData(new Hotel
                   {
@@ -159,8 +163,36 @@ namespace Asyn_Inn.Data
                     PetFriendly = true
                   });
 
+      SeedRole(modelBuilder, "Administrator");
+      SeedRole(modelBuilder, "Editor");
+
       modelBuilder.Entity<HotelRoom>()
                   .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelId, HotelRoomNumber.RoomNumber });
     }// end of OnModelCreating
+
+    private void SeedRole(ModelBuilder modelBuilder, string roleName, params string[] permissions)
+    {
+      var role = new IdentityRole
+      {
+        Id = roleName.ToLower(),
+        Name = roleName,
+        NormalizedName = roleName.ToUpper(),
+        ConcurrencyStamp = Guid.Empty.ToString()
+      };
+
+      modelBuilder.Entity<IdentityRole>().HasData(role);
+
+      // Go through the permissions list (the params) and seed a new entry for each
+      var roleClaims = permissions.Select(permission =>
+      new IdentityRoleClaim<string>
+      {
+        Id = nextId++,
+        RoleId = role.Id,
+        ClaimType = "permissions", // This matches what we did in Startup.cs
+        ClaimValue = permission
+      }).ToArray();
+
+      modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
+    }
   }
 }

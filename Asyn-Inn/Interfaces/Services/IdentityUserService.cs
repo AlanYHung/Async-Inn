@@ -2,9 +2,7 @@
 using Asyn_Inn.Models.API;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Asyn_Inn.Interfaces.Services
@@ -12,10 +10,12 @@ namespace Asyn_Inn.Interfaces.Services
   public class IdentityUserService : IUserService
   {
     private UserManager<ApplicationUser> userManager;
+    private JwtTokenService tokenService;
 
-    public IdentityUserService(UserManager<ApplicationUser> manager)
+    public IdentityUserService(UserManager<ApplicationUser> manager, JwtTokenService jwtTokenService)
     {
       userManager = manager;
+      tokenService = jwtTokenService;
     }
 
     public async Task<UserDTO> Register(RegisterUser data, ModelStateDictionary modelState)
@@ -33,10 +33,13 @@ namespace Asyn_Inn.Interfaces.Services
 
       if (result.Succeeded)
       {
+        // Because we have a "Good" user, let's add them to their proper role
+        await userManager.AddToRolesAsync(user, data.Roles);
         return new UserDTO
         {
           Id = user.Id,
-          Username = user.UserName
+          Username = user.UserName,
+          Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15)),
         };
       }
 
@@ -53,7 +56,11 @@ namespace Asyn_Inn.Interfaces.Services
         modelState.AddModelError(errorKey, error.Description);
       }
 
-      return null;
+      return new UserDTO
+      {
+        Id = user.Id,
+        Username = user.UserName,
+      };
     }
 
     public async Task<UserDTO> Authenticate(string username, string password)
@@ -65,11 +72,24 @@ namespace Asyn_Inn.Interfaces.Services
         return new UserDTO
         {
           Id = user.Id,
-          Username = user.UserName
+          Username = user.UserName,
+          Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15))
         };
       }
 
       return null;
     }
-  }
-}
+
+    // Use a "claim" to get a user
+    public async Task<UserDTO> GetUser(ClaimsPrincipal principal)
+    {
+      var user = await userManager.GetUserAsync(principal);
+      return new UserDTO
+      {
+        Id = user.Id,
+        Username = user.UserName,
+        Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15))
+      };
+    }
+  }// end of class
+}// end of namespace
