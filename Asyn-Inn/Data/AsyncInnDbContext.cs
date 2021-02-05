@@ -11,7 +11,6 @@ namespace Asyn_Inn.Data
 {
   public class AsyncInnDbContext : IdentityDbContext<ApplicationUser>
   {
-    private int nextId = 1; // we need this to generate a unique id on our own
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<HotelRoom> HotelRooms { get; set; }
     public DbSet<Room> Rooms { get; set; }
@@ -163,13 +162,11 @@ namespace Asyn_Inn.Data
                     PetFriendly = true
                   });
 
-      SeedRole(modelBuilder, "Administrator");
-      SeedRole(modelBuilder, "Editor");
-
       modelBuilder.Entity<HotelRoom>()
                   .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelId, HotelRoomNumber.RoomNumber });
     }// end of OnModelCreating
 
+    private int nextId = 1; // we need this to generate a unique id on our own
     private void SeedRole(ModelBuilder modelBuilder, string roleName, params string[] permissions)
     {
       var role = new IdentityRole

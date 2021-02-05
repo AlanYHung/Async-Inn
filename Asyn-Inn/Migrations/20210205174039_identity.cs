@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Asyn_Inn.Migrations
 {
-    public partial class initial : Migration
+    public partial class identity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -259,6 +259,16 @@ namespace Asyn_Inn.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "administrator", "00000000-0000-0000-0000-000000000000", "Administrator", "ADMINISTRATOR" },
+                    { "editor", "00000000-0000-0000-0000-000000000000", "Editor", "EDITOR" },
+                    { "writer", "00000000-0000-0000-0000-000000000000", "Writer", "WRITER" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Hotels",
                 columns: new[] { "Id", "City", "Country", "Name", "Phone", "State", "StreetAddress" },
                 values: new object[,]
@@ -276,6 +286,19 @@ namespace Asyn_Inn.Migrations
                     { 1, "Singularity X", 0 },
                     { 2, "Black Hole Y", 1 },
                     { 3, "Event Horizon Z", 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoleClaims",
+                columns: new[] { "Id", "ClaimType", "ClaimValue", "RoleId" },
+                values: new object[,]
+                {
+                    { 1, "permissions", "create", "administrator" },
+                    { 2, "permissions", "update", "administrator" },
+                    { 3, "permissions", "delete", "administrator" },
+                    { 4, "permissions", "create", "editor" },
+                    { 5, "permissions", "update", "editor" },
+                    { 6, "permissions", "create", "writer" }
                 });
 
             migrationBuilder.InsertData(

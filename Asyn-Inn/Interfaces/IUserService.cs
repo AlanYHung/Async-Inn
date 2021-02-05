@@ -7,8 +7,8 @@ namespace Asyn_Inn.Interfaces
 {
   public interface IUserService
   {
-    public Task<UserDTO> Register(RegisterUser data, ModelStateDictionary modelState);
-    public Task<UserDTO> Authenticate(string username, string password);
-    public Task<UserDTO> GetUser(ClaimsPrincipal principal);
+    Task<UserDTO> Register(RegisterUser data, ModelStateDictionary modelState);
+    Task<UserDTO> Authenticate(string username, string password);
+    Task<UserDTO> GetUser(ClaimsPrincipal principal);
   }
 }
