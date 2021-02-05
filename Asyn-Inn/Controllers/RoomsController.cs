@@ -26,6 +26,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // GET: api/Rooms
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
     {
@@ -33,6 +34,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // GET: api/Rooms/5
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<RoomDTO>> GetRoom(int id)
     {
@@ -49,6 +51,7 @@ namespace Asyn_Inn.Controllers
     // PUT: api/Rooms/5
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+    [Authorize(Roles = "Editor")]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutRoom(int id, RoomDTO room)
     {
@@ -64,6 +67,7 @@ namespace Asyn_Inn.Controllers
     // POST: api/Rooms
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+    [Authorize(Roles = "Writer")]
     [HttpPost]
     public async Task<ActionResult<Room>> PostRoom(RoomDTO room)
     {
@@ -72,6 +76,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // DELETE: api/Rooms/5
+    [Authorize(Roles = "Administrator")]
     [HttpDelete("{id}")]
     public async Task<ActionResult<Room>> DeleteRoom(int id)
     {
@@ -81,6 +86,7 @@ namespace Asyn_Inn.Controllers
 
     // Add an amenity to a room
     // Post: api/4/6
+    [Authorize(Roles = "Writer")]
     [HttpPost]
     [Route("{amenityId}/{roomId}")]
     public async Task<IActionResult> AddAmenityToRoom(int roomId, int amenityId)
@@ -89,6 +95,7 @@ namespace Asyn_Inn.Controllers
       return NoContent();
     }
 
+    [Authorize(Roles = "Administrator")]
     [HttpDelete]
     [Route("{amenityId}/{roomId}")]
     public async Task<IActionResult> RemoveAmenity(int roomId, int amenityId)

@@ -26,6 +26,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // GET: api/Hotels
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Hotel>>> GetHotels()
     {
@@ -33,6 +34,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // GET: api/Hotels/5
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<HotelDTO>> GetHotel(int id)
     {
@@ -49,6 +51,7 @@ namespace Asyn_Inn.Controllers
     // PUT: api/Hotels/5
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+    [Authorize(Roles = "Editor")]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutHotel(int id, HotelDTO hotel)
     {
@@ -64,6 +67,7 @@ namespace Asyn_Inn.Controllers
     // POST: api/Hotels
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+    [Authorize(Roles = "Administrator")]
     [HttpPost]
     public async Task<ActionResult<Hotel>> PostHotel(HotelDTO hotel)
     {
@@ -72,6 +76,7 @@ namespace Asyn_Inn.Controllers
     }
 
     // DELETE: api/Hotels/5
+    [Authorize(Roles = "Administrator")]
     [HttpDelete("{id}")]
     public async Task<ActionResult<Hotel>> DeleteHotel(int id)
     {
